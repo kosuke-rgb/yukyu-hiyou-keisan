@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>有給休暇 付与日数計算ツール | 入社日から自動計算</title>
+<meta name="description" content="入社日と週の所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・現在の残日数の目安を自動計算。週4日・週3日など短時間勤務の比例付与にも対応した無料ツールです。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webtools-labs.com/yukyu-hiyou-keisan/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370765779014113" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NKK5TXCQEK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NKK5TXCQEK');
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f766e'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='sans-serif'%3E%EF%BF%A5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="有給休暇 付与日数計算ツール | 入社日から自動計算">
+<meta property="og:description" content="入社日を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・残日数の目安が分かります。">
+<meta property="og:url" content="https://webtools-labs.com/yukyu-hiyou-keisan/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有給休暇 付与日数計算ツール">
+<meta name="twitter:description" content="入社日から有給休暇の付与日数・次回付与日・残日数の目安を自動計算する無料ツール。">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "有給休暇 付与日数計算ツール",
+  "url": "https://webtools-labs.com/yukyu-hiyou-keisan/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "description": "入社日と週の所定労働日数から、労働基準法にもとづく有給休暇の付与日数・次回の付与日・残日数の目安を自動計算できる無料ツール。",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+  "inLanguage": "ja"
+}
+</script>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface-2: #f7f7f7;
+  --ink: #1a1a1a;
+  --muted: #767676;
+  --line: #e3e3e3;
+  --accent: #0f766e;
+  --best-bg: #f0f8f6;
+  --warn-bg: #fff7ed;
+  --warn-ink: #9a5b00;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+header.masthead { margin-bottom: 1.5rem; }
+h1 {
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4.5vw, 1.7rem);
+  margin: 0 0 0.7rem;
+  letter-spacing: 0.01em;
+}
+p.lede { color: var(--muted); margin: 0; max-width: 60ch; font-size: 0.95rem; }
+.updated-note { display: block; margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted); }
+
+.notice-box {
+  background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px;
+  padding: 0.9rem 1.1rem; font-size: 0.85rem; margin-bottom: 2rem;
+}
+
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.05rem; font-weight: 700; margin: 0 0 1rem; }
+
+.field-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+.field { flex: 1; min-width: 180px; }
+.field label { display: block; font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
+.field input[type="date"], .field input[type="number"], .field select {
+  width: 100%; font-variant-numeric: tabular-nums; font-size: 1.05rem; font-family: inherit;
+  padding: 0.55rem 0.7rem; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--ink);
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+
+.summary-cards { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+.summary-card {
+  flex: 1; min-width: 200px; background: var(--best-bg); border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+.summary-card .label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+.summary-card .value { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.summary-card .sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+table.compare { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+table.compare th, table.compare td {
+  padding: 0.55rem 0.5rem; text-align: right; border-bottom: 1px solid var(--line); vertical-align: top;
+}
+table.compare th:first-child, table.compare td:first-child { text-align: left; }
+table.compare thead th { color: var(--muted); font-weight: 500; font-size: 0.78rem; }
+table.compare td.num { font-variant-numeric: tabular-nums; }
+tr.passed { color: var(--muted); }
+tr.next { background: var(--best-bg); }
+tr.next td:first-child { font-weight: 700; }
+.tag { display: inline-block; font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; font-weight: 500; }
+
+.ref-table { overflow-x: auto; }
+.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 520px; }
+.ref-table th, .ref-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
+.ref-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+
+.disclaimer { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+
+.ad-slot { margin: 2.5rem 0; text-align: center; min-height: 100px; }
+
+.contact-box textarea {
+  width: 100%; min-height: 6rem; font-family: inherit; font-size: 0.92rem;
+  padding: 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink);
+  resize: vertical; margin-bottom: 0.6rem;
+}
+.contact-box input[type="email"] {
+  width: 100%; font-family: inherit; font-size: 0.92rem;
+  padding: 0.6rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.contact-box textarea:focus, .contact-box input:focus { outline: none; border-color: var(--accent); }
+.contact-box button {
+  font-family: inherit; font-weight: 700; font-size: 0.9rem; padding: 0.6rem 1.4rem;
+  border: none; border-radius: 6px; background: var(--accent); color: #fff; cursor: pointer;
+}
+.contact-box button:disabled { opacity: 0.5; cursor: not-allowed; }
+.contact-status { font-size: 0.85rem; margin-top: 0.6rem; }
+.contact-status.ok { color: var(--accent); }
+.contact-status.err { color: #b91c1c; }
+
+footer.site-footer {
+  margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+  font-size: 0.78rem; color: var(--muted);
+}
+footer.site-footer p { margin: 0 0 0.5rem; }
+footer.site-footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <h1>有給休暇 付与日数計算ツール</h1>
+    <p class="lede">入社日と週の所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・現在の残日数の目安をまとめて計算します。</p>
+    <span class="updated-note">労働基準法の付与日数表 最終確認日: 2026年8月30日</span>
+  </header>
+
+  <div class="notice-box">
+    ⚠️ 年10日以上の有給休暇が付与される労働者には、企業側に「年5日は必ず取得させる」義務があります（2019年4月施行）。付与日数が10日以上の方は、この点もあわせて確認しておくのがおすすめです。
+  </div>
+
+  <section>
+    <h2>付与日数を計算</h2>
+    <div class="field-row">
+      <div class="field">
+        <label for="hireDate">入社日</label>
+        <input type="date" id="hireDate" value="2023-04-01">
+      </div>
+      <div class="field">
+        <label for="workDays">週の所定労働日数</label>
+        <select id="workDays">
+          <option value="full">週5日以上（または週30時間以上）</option>
+          <option value="w4">週4日</option>
+          <option value="w3">週3日</option>
+          <option value="w2">週2日</option>
+          <option value="w1">週1日</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="usedDays">これまでに取得した有給の合計日数（分かれば）</label>
+        <input type="number" id="usedDays" min="0" step="1" value="0">
+      </div>
+    </div>
+
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="label">現在の残日数（目安）</div>
+        <div class="value" id="remainingValue">-</div>
+        <div class="sub" id="remainingSub"></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">次回の付与日</div>
+        <div class="value" id="nextDateValue">-</div>
+        <div class="sub" id="nextDaysSub"></div>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto">
+      <table class="compare">
+        <thead>
+          <tr><th>付与日</th><th class="num">勤続</th><th class="num">付与日数</th></tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+    <p class="disclaimer">残日数は「今日までに到来した付与日の日数合計 − 取得済み日数」の簡易計算です。有給の繰越（2年で時効消滅）や、会社独自の上乗せ制度は考慮していません。正確な残日数は勤怠システムや会社の給与・労務担当にご確認ください。</p>
+  </section>
+
+  <section>
+    <h2>労働基準法の付与日数 早見表</h2>
+    <div class="ref-table">
+      <table>
+        <thead><tr><th>勤続年数</th><th class="num">週5日以上</th><th class="num">週4日</th><th class="num">週3日</th><th class="num">週2日</th><th class="num">週1日</th></tr></thead>
+        <tbody>
+          <tr><td>6ヶ月</td><td class="num">10日</td><td class="num">7日</td><td class="num">5日</td><td class="num">3日</td><td class="num">1日</td></tr>
+          <tr><td>1年6ヶ月</td><td class="num">11日</td><td class="num">8日</td><td class="num">6日</td><td class="num">4日</td><td class="num">2日</td></tr>
+          <tr><td>2年6ヶ月</td><td class="num">12日</td><td class="num">9日</td><td class="num">6日</td><td class="num">4日</td><td class="num">2日</td></tr>
+          <tr><td>3年6ヶ月</td><td class="num">14日</td><td class="num">10日</td><td class="num">8日</td><td class="num">5日</td><td class="num">2日</td></tr>
+          <tr><td>4年6ヶ月</td><td class="num">16日</td><td class="num">12日</td><td class="num">9日</td><td class="num">6日</td><td class="num">3日</td></tr>
+          <tr><td>5年6ヶ月</td><td class="num">18日</td><td class="num">13日</td><td class="num">10日</td><td class="num">6日</td><td class="num">3日</td></tr>
+          <tr><td>6年6ヶ月以上</td><td class="num">20日</td><td class="num">15日</td><td class="num">11日</td><td class="num">7日</td><td class="num">3日</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">「週4日」「週3日」等の比例付与は、週の所定労働時間が30時間未満の場合に適用されます。週30時間以上勤務している場合は、労働日数にかかわらず「週5日以上」の欄が適用されます。</p>
+  </section>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2370765779014113"
+      data-ad-slot="3021985784"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <section class="contact-box">
+    <h2>ご意見・追加してほしい機能</h2>
+    <p class="lede" style="margin-bottom:0.9rem;">気づいたことや、あったら便利な機能があれば教えてください。</p>
+    <form id="contactForm">
+      <input type="email" id="contactEmail" placeholder="返信が必要な場合はメールアドレス（任意）">
+      <textarea id="contactMessage" placeholder="ご意見・ご要望をどうぞ" required></textarea>
+      <button type="submit" id="contactSubmit">送信する</button>
+      <p class="contact-status" id="contactStatus"></p>
+    </form>
+  </section>
+
+  <footer class="site-footer">
+    <p>本ツールの計算結果は労働基準法上の最低基準にもとづく目安であり、実際の付与日数・残日数を保証するものではありません。会社独自の制度がある場合はそちらが優先されます。正確な情報は勤務先の就業規則・労務担当にご確認ください。</p>
+    <p>あわせて使える：
+      <a href="https://webtools-labs.com/furima-hikaku-keisan/">フリマ手数料計算・比較ツール</a> ／
+      <a href="https://webtools-labs.com/furima-hasso-hikaku/">フリマ配送方法・送料比較ツール</a> ／
+      <a href="https://webtools-labs.com/furima-tedori-simulator/">フリマ手取りシミュレーター</a> ／
+      <a href="https://webtools-labs.com/hitorigurashi-hiyou-keisan/">一人暮らし初期費用シミュレーター</a>
+    </p>
+    <p>当サイトは広告を掲載する場合があります。</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var DAYS_TABLE = {
+    full: [10, 11, 12, 14, 16, 18, 20],
+    w4:   [7, 8, 9, 10, 12, 13, 15],
+    w3:   [5, 6, 6, 8, 9, 10, 11],
+    w2:   [3, 4, 4, 5, 6, 6, 7],
+    w1:   [1, 2, 2, 2, 3, 3, 3]
+  };
+  var LABEL = { full: '週5日以上', w4: '週4日', w3: '週3日', w2: '週2日', w1: '週1日' };
+  var MILESTONE_LABELS = ['6ヶ月', '1年6ヶ月', '2年6ヶ月', '3年6ヶ月', '4年6ヶ月', '5年6ヶ月', '6年6ヶ月', '7年6ヶ月', '8年6ヶ月', '9年6ヶ月', '10年6ヶ月', '11年6ヶ月'];
+  var MILESTONE_MONTHS = [6, 18, 30, 42, 54, 66, 78, 90, 102, 114, 126, 138];
+
+  var hireDateInput = document.getElementById('hireDate');
+  var workDaysSelect = document.getElementById('workDays');
+  var usedDaysInput = document.getElementById('usedDays');
+  var resultBody = document.getElementById('resultBody');
+  var remainingValue = document.getElementById('remainingValue');
+  var remainingSub = document.getElementById('remainingSub');
+  var nextDateValue = document.getElementById('nextDateValue');
+  var nextDaysSub = document.getElementById('nextDaysSub');
+
+  function addMonths(date, months) {
+    var d = new Date(date.getTime());
+    var day = d.getDate();
+    d.setDate(1);
+    d.setMonth(d.getMonth() + months);
+    var daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    d.setDate(Math.min(day, daysInMonth));
+    return d;
+  }
+
+  function fmtDate(d) {
+    return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+  }
+
+  function daysForIndex(table, index) {
+    return table[Math.min(index, table.length - 1)];
+  }
+
+  function render() {
+    var hireVal = hireDateInput.value;
+    if (!hireVal) return;
+    var hireDate = new Date(hireVal + 'T00:00:00');
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var table = DAYS_TABLE[workDaysSelect.value];
+    var usedDays = Math.max(0, Number(usedDaysInput.value) || 0);
+
+    var rows = [];
+    var totalGranted = 0;
+    var nextMilestone = null;
+
+    for (var i = 0; i < MILESTONE_MONTHS.length; i++) {
+      var grantDate = addMonths(hireDate, MILESTONE_MONTHS[i]);
+      var days = daysForIndex(table, i);
+      var passed = grantDate <= today;
+      if (passed) {
+        totalGranted += days;
+      } else if (!nextMilestone) {
+        nextMilestone = { date: grantDate, days: days };
+      }
+      rows.push({ label: MILESTONE_LABELS[i], date: grantDate, days: days, passed: passed, isNext: !passed && nextMilestone && nextMilestone.date.getTime() === grantDate.getTime() });
+    }
+
+    resultBody.innerHTML = rows.map(function (r) {
+      var cls = r.isNext ? 'next' : (r.passed ? 'passed' : '');
+      var tag = r.isNext ? '<span class="tag">次回</span>' : (r.passed ? '' : '');
+      return '<tr class="' + cls + '">' +
+        '<td>' + fmtDate(r.date) + tag + '</td>' +
+        '<td class="num">' + r.label + '</td>' +
+        '<td class="num">' + r.days + '日</td>' +
+        '</tr>';
+    }).join('');
+
+    var remaining = totalGranted - usedDays;
+    if (hireDate > today) {
+      remainingValue.textContent = '入社前';
+      remainingSub.textContent = 'まだ入社日を迎えていません';
+    } else {
+      remainingValue.textContent = remaining + '日';
+      remainingSub.textContent = '累計付与 ' + totalGranted + '日 − 取得済み ' + usedDays + '日';
+    }
+
+    if (nextMilestone) {
+      nextDateValue.textContent = fmtDate(nextMilestone.date);
+      nextDaysSub.textContent = '付与日数 ' + nextMilestone.days + '日（' + LABEL[workDaysSelect.value] + '）';
+    } else {
+      nextDateValue.textContent = '-';
+      nextDaysSub.textContent = '';
+    }
+  }
+
+  [hireDateInput, workDaysSelect, usedDaysInput].forEach(function (el) {
+    el.addEventListener('input', render);
+    el.addEventListener('change', render);
+  });
+
+  render();
+
+  var WEB3FORMS_ACCESS_KEY = '4551c9fd-4327-4bd4-97e0-8b93d85fd077';
+  var contactForm = document.getElementById('contactForm');
+  var contactStatus = document.getElementById('contactStatus');
+  var contactSubmit = document.getElementById('contactSubmit');
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    contactSubmit.disabled = true;
+    contactStatus.textContent = '送信中...';
+    contactStatus.className = 'contact-status';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: '有給休暇計算ツールへのお問い合わせ',
+        email: document.getElementById('contactEmail').value || 'noreply@example.com',
+        message: document.getElementById('contactMessage').value
+      })
+    }).then(function (res) { return res.json(); }).then(function (data) {
+      contactSubmit.disabled = false;
+      if (data.success) {
+        contactStatus.textContent = '送信しました。ありがとうございます！';
+        contactStatus.className = 'contact-status ok';
+        contactForm.reset();
+      } else {
+        contactStatus.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+        contactStatus.className = 'contact-status err';
+      }
+    }).catch(function () {
+      contactSubmit.disabled = false;
+      contactStatus.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+      contactStatus.className = 'contact-status err';
+    });
+  });
+})();
+</script>
+</body>
+</html>
