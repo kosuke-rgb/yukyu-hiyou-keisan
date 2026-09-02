@@ -117,6 +117,14 @@ tr.next td:first-child { font-weight: 700; }
 
 .disclaimer { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
 
+.share-btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.1rem;
+  padding: 0.55rem 1.1rem; border-radius: 999px; background: #000; color: #fff;
+  text-decoration: none; font-size: 0.85rem; font-weight: 700;
+}
+.share-btn:hover { opacity: 0.85; }
+.share-btn svg { width: 14px; height: 14px; fill: #fff; }
+
 .ad-slot { margin: 2.5rem 0; text-align: center; min-height: 100px; }
 
 .contact-box textarea {
@@ -206,6 +214,10 @@ footer.site-footer a { color: var(--accent); }
       </table>
     </div>
     <p class="disclaimer">残日数は「今日までに到来した付与日の日数合計 − 取得済み日数」の簡易計算です。有給の繰越（2年で時効消滅）や、会社独自の上乗せ制度は考慮していません。正確な残日数は勤怠システムや会社の給与・労務担当にご確認ください。</p>
+    <a class="share-btn" id="shareBtn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      結果をシェア
+    </a>
   </section>
 
   <section>
@@ -283,6 +295,7 @@ footer.site-footer a { color: var(--accent); }
   var remainingSub = document.getElementById('remainingSub');
   var nextDateValue = document.getElementById('nextDateValue');
   var nextDaysSub = document.getElementById('nextDaysSub');
+  var shareBtn = document.getElementById('shareBtn');
 
   function addMonths(date, months) {
     var d = new Date(date.getTime());
@@ -352,6 +365,16 @@ footer.site-footer a { color: var(--accent); }
     } else {
       nextDateValue.textContent = '-';
       nextDaysSub.textContent = '';
+    }
+
+    if (hireDate > today) {
+      shareBtn.style.display = 'none';
+    } else {
+      shareBtn.style.display = '';
+      var shareText = '有給の残り日数を計算したら ' + remaining + '日 だった\n' +
+        (nextMilestone ? '次の付与は' + fmtDate(nextMilestone.date) + '予定\n\n' : '\n') +
+        '有給休暇 付与日数計算ツール';
+      shareBtn.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent('https://webtools-labs.com/yukyu-hiyou-keisan/');
     }
   }
 
