@@ -39,6 +39,29 @@
   "inLanguage": "ja"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "入社してすぐ有給休暇はもらえますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "労働基準法では、入社日から6か月継続して勤務し、その間の出勤率が8割以上であれば、入社6か月後に10日の有給休暇が付与されます。入社直後の数か月間は原則として有給休暇が付与されません。" }
+    },
+    {
+      "@type": "Question",
+      "name": "週3日・週4日勤務のパート・アルバイトでも有給はもらえますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "はい。週の所定労働日数が少ない場合でも「比例付与」という制度により、労働日数に応じた日数の有給休暇が付与されます。たとえば週4日勤務なら6か月後に7日、週3日勤務なら5日というように、フルタイムより少ない日数が段階的に付与されます。" }
+    },
+    {
+      "@type": "Question",
+      "name": "有給休暇の付与日数は毎年増えますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "はい。勤続年数に応じて付与日数は増えていき、フルタイム勤務の場合、勤続6年6か月以降は年20日が上限となります。付与日から2年間で時効消滅するため、使い切れなかった分は翌年度まで繰り越せますが、それ以降は失効する点に注意が必要です。" }
+    }
+  ]
+}
+</script>
 <style>
 :root {
   --bg: #ffffff;
@@ -156,6 +179,19 @@ footer.site-footer {
 }
 footer.site-footer p { margin: 0 0 0.5rem; }
 footer.site-footer a { color: var(--accent); }
+
+.faq-item { border-bottom: 1px solid var(--line); padding: 0.9rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  cursor: pointer; font-weight: 700; font-size: 0.92rem; list-style: none;
+  position: relative; padding-right: 1.6rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 0; top: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.88rem; }
 </style>
 </head>
 <body>
@@ -253,6 +289,22 @@ footer.site-footer a { color: var(--accent); }
       data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+
+  <section>
+    <h2>よくある質問</h2>
+    <details class="faq-item">
+      <summary>入社してすぐ有給休暇はもらえますか？</summary>
+      <p>労働基準法では、入社日から6か月継続して勤務し、その間の出勤率が8割以上であれば、入社6か月後に10日の有給休暇が付与されます。入社直後の数か月間は原則として有給休暇が付与されません。</p>
+    </details>
+    <details class="faq-item">
+      <summary>週3日・週4日勤務のパート・アルバイトでも有給はもらえますか？</summary>
+      <p>はい。週の所定労働日数が少ない場合でも「比例付与」という制度により、労働日数に応じた日数の有給休暇が付与されます。たとえば週4日勤務なら6か月後に7日、週3日勤務なら5日というように、フルタイムより少ない日数が段階的に付与されます。</p>
+    </details>
+    <details class="faq-item">
+      <summary>有給休暇の付与日数は毎年増えますか？</summary>
+      <p>はい。勤続年数に応じて付与日数は増えていき、フルタイム勤務の場合、勤続6年6か月以降は年20日が上限となります。付与日から2年間で時効消滅するため、使い切れなかった分は翌年度まで繰り越せますが、それ以降は失効する点に注意が必要です。</p>
+    </details>
+  </section>
 
   <section class="contact-box">
     <h2>ご意見・追加してほしい機能</h2>
