@@ -87,6 +87,16 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://webtools-labs.com/" },
+    { "@type": "ListItem", "position": 2, "name": "有給休暇 付与日数計算ツール" }
+  ]
+}
+</script>
 <style>
 :root {
   --bg: #ffffff;
@@ -229,10 +239,14 @@ footer.site-footer a { color: var(--accent); }
 }
 .faq-item[open] summary::after { content: '−'; }
 .faq-item p { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.1rem; }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <div class="page">
+  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="https://webtools-labs.com/">ホーム</a> / 有給休暇 付与日数計算ツール</nav>
   <header class="masthead">
     <h1>有給休暇 付与日数計算ツール</h1>
     <p class="lede">入社日と週の所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・現在の残日数の目安をまとめて計算します。</p>
