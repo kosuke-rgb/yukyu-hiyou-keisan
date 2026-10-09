@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>有給休暇 付与日数計算ツール | 入社日から自動計算</title>
-<meta name="description" content="入社日と週の所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・現在の残日数の目安を自動計算。週4日・週3日など短時間勤務の比例付与にも対応した無料ツールです。">
+<title>有給休暇 付与日数計算ツール｜入社日から何日もらえる？残日数・時効（2年）・パートにも対応</title>
+<meta name="description" content="入社日と所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・2年の時効を反映した残日数の目安を自動計算。パート・アルバイトの比例付与（週の日数・年間の日数）や、勤続10年以上にも対応した無料ツールです。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webtools-labs.com/yukyu-hiyou-keisan/">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370765779014113" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="webtools-labs">
-<meta property="og:title" content="有給休暇 付与日数計算ツール | 入社日から自動計算">
+<meta property="og:title" content="有給休暇 付与日数計算ツール｜入社日から何日もらえる？残日数・時効（2年）・パートにも対応">
 <meta property="og:description" content="入社日を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・残日数の目安が分かります。">
 <meta property="og:url" content="https://webtools-labs.com/yukyu-hiyou-keisan/">
 <meta property="og:image" content="https://webtools-labs.com/yukyu-hiyou-keisan/og-image.png">
@@ -83,6 +83,21 @@
       "@type": "Question",
       "name": "退職時に消化しきれない有給休暇はどうなりますか？",
       "acceptedAnswer": { "@type": "Answer", "text": "退職日を迎えると、その時点で残っている有給休暇の権利は消滅します。退職前にできるだけ消化するのが基本で、退職日から逆算した最終出社日を確認したい場合は、退職時の有給消化シミュレーターもあわせてご利用ください。" }
+    },
+    {
+      "@type": "Question",
+      "name": "有給休暇は何日まで貯められますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "有給休暇は付与日から2年で時効により消滅するため、使い切れなかった分は翌年まで繰り越せますが、それより前の分は消えます。フルタイムで勤続6年6か月以上なら、毎年20日が付与され、前年分の繰越20日と合わせて最大40日まで持てます。" }
+    },
+    {
+      "@type": "Question",
+      "name": "シフト制で週の勤務日数が決まっていない場合はどうなりますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "週の所定労働日数が決まっていない場合は、1年間の所定労働日数で判定します。年217日以上ならフルタイムと同じ日数、年169〜216日は週4日、年121〜168日は週3日、年73〜120日は週2日、年48〜72日は週1日と同じ日数が付与されます。ただし週の所定労働時間が30時間以上なら、日数にかかわらずフルタイムと同じ日数です。" }
+    },
+    {
+      "@type": "Question",
+      "name": "出勤率が8割未満の年はどうなりますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "付与日の直前1年間（最初は入社後6か月間）の出勤率が8割未満だと、その年は有給休暇が付与されません。ただし勤続年数のカウントは続くため、翌年に出勤率8割以上になれば、その時点の勤続年数に応じた日数が付与されます。業務上のけが・病気による休業、育児休業・介護休業、産前産後休業、有給休暇を取った日は、出勤したものとして扱われます。" }
     }
   ]
 }
@@ -166,6 +181,7 @@ table.compare td.num { font-variant-numeric: tabular-nums; }
 tr.passed { color: var(--muted); }
 tr.next { background: var(--best-bg); }
 tr.next td:first-child { font-weight: 700; }
+.tag.muted { color: var(--muted); border-color: var(--muted); }
 .tag { display: inline-block; font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; font-weight: 500; }
 
 .ref-table { overflow-x: auto; }
@@ -251,7 +267,7 @@ footer.site-footer a { color: var(--accent); }
   <header class="masthead">
     <h1>有給休暇 付与日数計算ツール</h1>
     <p class="lede">入社日と週の所定労働日数を入れるだけで、労働基準法にもとづく有給休暇の付与日数・次回の付与日・現在の残日数の目安をまとめて計算します。</p>
-    <span class="updated-note">労働基準法の付与日数表 最終確認日: 2026年8月30日</span>
+    <span class="updated-note">労働基準法の付与日数表 最終確認日: 2026年10月9日（労働基準法第39条・施行規則第24条の3、厚生労働省の資料にもとづく）</span>
     <p class="ad-disclosure" style="font-size:0.75rem;opacity:0.7;margin:0.5rem 0 0;">※当サイトはアフィリエイト広告（PR）を利用しています。</p>
   </header>
 
@@ -273,19 +289,28 @@ footer.site-footer a { color: var(--accent); }
         <input type="date" id="hireDate" value="2023-04-01">
       </div>
       <div class="field">
-        <label for="workDays">週の所定労働日数</label>
+        <label for="workDays">所定労働日数（週または年間）</label>
         <select id="workDays">
-          <option value="full">週5日以上（または週30時間以上）</option>
-          <option value="w4">週4日</option>
-          <option value="w3">週3日</option>
-          <option value="w2">週2日</option>
-          <option value="w1">週1日</option>
+          <optgroup label="週で決まっている場合">
+            <option value="full">週5日以上（または週30時間以上）</option>
+            <option value="w4">週4日</option>
+            <option value="w3">週3日</option>
+            <option value="w2">週2日</option>
+            <option value="w1">週1日</option>
+          </optgroup>
+          <optgroup label="シフト制など年間で決まっている場合">
+            <option value="a5">年217日以上</option>
+            <option value="a4">年169〜216日</option>
+            <option value="a3">年121〜168日</option>
+            <option value="a2">年73〜120日</option>
+            <option value="a1">年48〜72日</option>
+          </optgroup>
         </select>
       </div>
     </div>
     <div class="field-row">
       <div class="field">
-        <label for="usedDays">これまでに取得した有給の合計日数（分かれば）</label>
+        <label for="usedDays">入社からこれまでに取得した有給の合計日数（分かれば）</label>
         <input type="number" id="usedDays" min="0" step="1" value="0">
       </div>
     </div>
@@ -311,7 +336,7 @@ footer.site-footer a { color: var(--accent); }
         <tbody id="resultBody"></tbody>
       </table>
     </div>
-    <p class="disclaimer">残日数は「今日までに到来した付与日の日数合計 − 取得済み日数」の簡易計算です。有給の繰越（2年で時効消滅）や、会社独自の上乗せ制度は考慮していません。正確な残日数は勤怠システムや会社の給与・労務担当にご確認ください。</p>
+    <p class="disclaimer">有給休暇は付与日から2年で時効により消滅するため、使えるのは「直近2回分の付与日数」までです。残日数は、取得した有給を古い付与分から順に使った（繰越分から消化した）と仮定した目安で、時効で消えた日数を除いて計算しています。出勤率8割未満の年や、会社独自の上乗せ・基準日の統一は考慮していません。正確な残日数は勤怠システムや会社の労務担当にご確認ください。</p>
     <div class="share-row" id="shareRow">
       <a class="share-btn share-x" id="shareX" href="#" target="_blank" rel="noopener">𝕏でシェア</a>
       <a class="share-btn share-line" id="shareLine" href="#" target="_blank" rel="noopener">LINEで送る</a>
@@ -412,6 +437,18 @@ footer.site-footer a { color: var(--accent); }
       <summary>退職時に消化しきれない有給休暇はどうなりますか？</summary>
       <p>退職日を迎えると、その時点で残っている有給休暇の権利は消滅します。退職前にできるだけ消化するのが基本で、退職日から逆算した最終出社日を確認したい場合は、退職時の有給消化シミュレーターもあわせてご利用ください。</p>
     </details>
+    <details class="faq-item">
+      <summary>有給休暇は何日まで貯められますか？</summary>
+      <p>有給休暇は付与日から2年で時効により消滅するため、使い切れなかった分は翌年まで繰り越せますが、それより前の分は消えます。フルタイムで勤続6年6か月以上なら、毎年20日が付与され、前年分の繰越20日と合わせて最大40日まで持てます。</p>
+    </details>
+    <details class="faq-item">
+      <summary>シフト制で週の勤務日数が決まっていない場合はどうなりますか？</summary>
+      <p>週の所定労働日数が決まっていない場合は、1年間の所定労働日数で判定します。年217日以上ならフルタイムと同じ日数、年169〜216日は週4日、年121〜168日は週3日、年73〜120日は週2日、年48〜72日は週1日と同じ日数が付与されます。ただし週の所定労働時間が30時間以上なら、日数にかかわらずフルタイムと同じ日数です。</p>
+    </details>
+    <details class="faq-item">
+      <summary>出勤率が8割未満の年はどうなりますか？</summary>
+      <p>付与日の直前1年間（最初は入社後6か月間）の出勤率が8割未満だと、その年は有給休暇が付与されません。ただし勤続年数のカウントは続くため、翌年に出勤率8割以上になれば、その時点の勤続年数に応じた日数が付与されます。業務上のけが・病気による休業、育児休業・介護休業、産前産後休業、有給休暇を取った日は、出勤したものとして扱われます。</p>
+    </details>
   </section>
 
   <section class="contact-box">
@@ -475,9 +512,11 @@ footer.site-footer a { color: var(--accent); }
     w2:   [3, 4, 4, 5, 6, 6, 7],
     w1:   [1, 2, 2, 2, 3, 3, 3]
   };
-  var LABEL = { full: '週5日以上', w4: '週4日', w3: '週3日', w2: '週2日', w1: '週1日' };
-  var MILESTONE_LABELS = ['6ヶ月', '1年6ヶ月', '2年6ヶ月', '3年6ヶ月', '4年6ヶ月', '5年6ヶ月', '6年6ヶ月', '7年6ヶ月', '8年6ヶ月', '9年6ヶ月', '10年6ヶ月', '11年6ヶ月'];
-  var MILESTONE_MONTHS = [6, 18, 30, 42, 54, 66, 78, 90, 102, 114, 126, 138];
+  // 年間所定労働日数で決まる場合も、同じ比例付与の表を使う（労働基準法施行規則第24条の3）
+  DAYS_TABLE.a5 = DAYS_TABLE.full; DAYS_TABLE.a4 = DAYS_TABLE.w4; DAYS_TABLE.a3 = DAYS_TABLE.w3; DAYS_TABLE.a2 = DAYS_TABLE.w2; DAYS_TABLE.a1 = DAYS_TABLE.w1;
+  var LABEL = { full: '週5日以上', w4: '週4日', w3: '週3日', w2: '週2日', w1: '週1日', a5: '年217日以上', a4: '年169〜216日', a3: '年121〜168日', a2: '年73〜120日', a1: '年48〜72日' };
+  // 2026-10-09修正: 以前は勤続11年6ヶ月までの付与しか作らず、それより長い人の付与と次回付与日が抜けていた
+  function milestoneLabel(i) { return i === 0 ? '6ヶ月' : i + '年6ヶ月'; }
 
   var hireDateInput = document.getElementById('hireDate');
   var workDaysSelect = document.getElementById('workDays');
@@ -528,24 +567,32 @@ footer.site-footer a { color: var(--accent); }
     var usedDays = Math.max(0, Number(usedDaysInput.value) || 0);
 
     var rows = [];
-    var totalGranted = 0;
+    var validSum = 0, expiredSum = 0;
     var nextMilestone = null;
+    var twoYearsAgo = addMonths(today, -24);
 
-    for (var i = 0; i < MILESTONE_MONTHS.length; i++) {
-      var grantDate = addMonths(hireDate, MILESTONE_MONTHS[i]);
+    for (var i = 0; i < 80; i++) {
+      var grantDate = addMonths(hireDate, 6 + 12 * i);
       var days = daysForIndex(table, i);
       var passed = grantDate <= today;
+      // 付与日から2年で時効（付与日の2年後の前日まで使える）
+      var expired = passed && grantDate <= twoYearsAgo;
       if (passed) {
-        totalGranted += days;
-      } else if (!nextMilestone) {
-        nextMilestone = { date: grantDate, days: days };
+        if (expired) expiredSum += days; else validSum += days;
       }
-      rows.push({ label: MILESTONE_LABELS[i], date: grantDate, days: days, passed: passed, isNext: !passed && nextMilestone && nextMilestone.date.getTime() === grantDate.getTime() });
+      var isNext = !passed && !nextMilestone;
+      if (isNext) nextMilestone = { date: grantDate, days: days };
+      rows.push({ label: milestoneLabel(i), date: grantDate, days: days, passed: passed, expired: expired, isNext: isNext });
+      if (!passed) break;
     }
+    // 長く勤めている人は表が長くなるため、時効になった古い付与は直近2件だけ表示する
+    var expiredRows = rows.filter(function (r) { return r.expired; });
+    var hiddenCount = Math.max(0, expiredRows.length - 2);
+    var shown = rows.slice(hiddenCount);
 
-    resultBody.innerHTML = rows.map(function (r) {
+    resultBody.innerHTML = (hiddenCount > 0 ? '<tr><td colspan="3" style="color:var(--muted)">（それ以前の' + hiddenCount + '回分は時効のため省略）</td></tr>' : '') + shown.map(function (r) {
       var cls = r.isNext ? 'next' : (r.passed ? 'passed' : '');
-      var tag = r.isNext ? '<span class="tag">次回</span>' : (r.passed ? '' : '');
+      var tag = r.isNext ? '<span class="tag">次回</span>' : (r.expired ? '<span class="tag muted">時効</span>' : (r.passed ? '<span class="tag">使用可</span>' : ''));
       return '<tr class="' + cls + '">' +
         '<td>' + fmtDate(r.date) + tag + '</td>' +
         '<td class="num">' + r.label + '</td>' +
@@ -553,13 +600,17 @@ footer.site-footer a { color: var(--accent); }
         '</tr>';
     }).join('');
 
-    var remaining = totalGranted - usedDays;
+    // 取得は古い付与分から順に使ったとみなす（時効分を先に使った分は、有効な日数から引かない）
+    var remaining = Math.max(0, validSum - Math.max(0, usedDays - expiredSum));
     if (hireDate > today) {
       remainingValue.textContent = '入社前';
       remainingSub.textContent = 'まだ入社日を迎えていません';
+    } else if (validSum === 0) {
+      remainingValue.textContent = '0日';
+      remainingSub.textContent = '最初の付与は入社6か月後です';
     } else {
       remainingValue.textContent = remaining + '日';
-      remainingSub.textContent = '累計付与 ' + totalGranted + '日 − 取得済み ' + usedDays + '日';
+      remainingSub.textContent = '使える上限 ' + validSum + '日（直近2回分）' + (expiredSum > 0 ? '・時効で消えた付与 ' + expiredSum + '日' : '');
     }
 
     if (nextMilestone) {
